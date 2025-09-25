@@ -1,0 +1,49 @@
+.
+├── app
+│   ├── api
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── bun.lock
+├── components
+│   ├── command-display.tsx
+│   ├── full-screen-output.tsx
+│   ├── header.tsx
+│   ├── notification-container.tsx
+│   ├── notification-provider.tsx
+│   ├── process-actions.tsx
+│   ├── process-card.tsx
+│   ├── process-initiation-row.tsx
+│   ├── process-output.tsx
+│   ├── process-stats.tsx
+│   ├── theme-provider.tsx
+│   ├── theme-toggle.tsx
+│   └── ui
+├── components.json
+├── hooks
+│   ├── use-mobile.ts
+│   ├── use-notifications.ts
+│   ├── use-process-actions.ts
+│   ├── use-processes.ts
+│   ├── use-theme.ts
+│   └── use-toast.ts
+├── lib
+│   ├── pueue-api.ts
+│   ├── pueue-exec.ts
+│   └── utils.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── public
+│   ├── placeholder-logo.png
+│   ├── placeholder-logo.svg
+│   ├── placeholder-user.jpg
+│   ├── placeholder.jpg
+│   └── placeholder.svg
+├── struct.txt
+├── styles
+│   └── globals.css
+├── todo.md
+└── tsconfig.json
