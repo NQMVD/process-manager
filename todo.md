@@ -1,5 +1,5 @@
 - [ ] the task id should be displayed in font of the task name with a hashtag and the id, both in a dimmed color
-- [ ] fix the dropdown for the clean button not showing
+- [x] fix the dropdown for the clean button not showing
 - [ ] fix the hover colors for the card buttons
 - [ ] fix timer not updating
 - [x] remove individual tasks using the `pueue remove <ID>` command via a button in the task card, task has to be completed, killed, or failed for that

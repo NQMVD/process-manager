@@ -137,7 +137,7 @@ export default function Home() {
                   <DropdownMenuContent
                     align="end"
                     sideOffset={4}
-                    className="w-56 z-[300] bg-popover border border-border shadow-lg rounded-md"
+                    className="w-56"
                   >
                     <DropdownMenuItem
                       onClick={async () => {
