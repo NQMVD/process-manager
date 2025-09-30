@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Play, Square, RotateCcw, Pause, Loader2, Power, Zap } from "lucide-react";
+import { Play, Square, RotateCcw, Pause, Loader2, Power, Zap, Trash2 } from "lucide-react";
 import { useProcessActions } from "@/hooks/use-process-actions";
 import { useNotificationContext } from "./notification-provider";
 
@@ -160,21 +160,39 @@ export function ProcessActions({
         );
       case "failed":
       case "completed":
+      case "killed":
         return (
-          <Button
-            variant="outline"
-            size="sm"
-            className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-            onClick={() => handleAction("restart")}
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-            ) : (
-              <RotateCcw className="h-3 w-3 mr-1" />
-            )}
-            Restart
-          </Button>
+          <>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+              onClick={() => handleAction("restart")}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+              ) : (
+                <RotateCcw className="h-3 w-3 mr-1" />
+              )}
+              Restart
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+              onClick={() => handleAction("remove")}
+              disabled={isLoading}
+              title="Remove task"
+            >
+              {isLoading ? (
+                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+              ) : (
+                <Trash2 className="h-3 w-3 mr-1" />
+              )}
+              Remove
+            </Button>
+          </>
         );
       case "queued":
         return (

@@ -2,7 +2,7 @@
 - [ ] fix the dropdown for the clean button not showing
 - [ ] fix the hover colors for the card buttons
 - [ ] fix timer not updating
-- [ ] remove individual tasks using the `pueue remove <ID>` command via a button in the task card, task has to be completed, killed, or failed for that
+- [x] remove individual tasks using the `pueue remove <ID>` command via a button in the task card, task has to be completed, killed, or failed for that
 - [ ] make this run without having to run in `next dev`, because building and starting doesn't work for some reason
 - [ ] fix colors and themes, light mode is broken
 - [ ] killed or failed tasks should be restartable
