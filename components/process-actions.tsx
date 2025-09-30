@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Play, Square, RotateCcw, Pause, Loader2 } from "lucide-react";
+import { Play, Square, RotateCcw, Pause, Loader2, Power, Zap } from "lucide-react";
 import { useProcessActions } from "@/hooks/use-process-actions";
 import { useNotificationContext } from "./notification-provider";
 
@@ -67,15 +67,46 @@ export function ProcessActions({
               variant="outline"
               size="sm"
               className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("stop")}
+              onClick={() => handleAction("shutdown")}
               disabled={isLoading}
+              title="Graceful shutdown (SIGINT)"
+            >
+              {isLoading ? (
+                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+              ) : (
+                <Power className="h-3 w-3 mr-1" />
+              )}
+              Shutdown
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+              onClick={() => handleAction("terminate")}
+              disabled={isLoading}
+              title="Terminate (SIGTERM)"
             >
               {isLoading ? (
                 <Loader2 className="h-3 w-3 mr-1 animate-spin" />
               ) : (
                 <Square className="h-3 w-3 mr-1" />
               )}
-              Stop
+              Terminate
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+              onClick={() => handleAction("kill")}
+              disabled={isLoading}
+              title="Force kill (SIGKILL)"
+            >
+              {isLoading ? (
+                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+              ) : (
+                <Zap className="h-3 w-3 mr-1" />
+              )}
+              Kill
             </Button>
             <Button
               variant="outline"
@@ -116,11 +147,12 @@ export function ProcessActions({
               className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
               onClick={() => handleAction("kill")}
               disabled={isLoading}
+              title="Force kill (SIGKILL)"
             >
               {isLoading ? (
                 <Loader2 className="h-3 w-3 mr-1 animate-spin" />
               ) : (
-                <Square className="h-3 w-3 mr-1" />
+                <Zap className="h-3 w-3 mr-1" />
               )}
               Kill
             </Button>
