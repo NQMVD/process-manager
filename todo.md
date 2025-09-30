@@ -1,12 +1,19 @@
-- [ ] the task id should be like the scrod rank with a hashtag and the id and in a dimmed color
+- [ ] the task id should be like the scord rank with a hashtag and the id and in a dimmed color
 - [ ] fix the dropdown not showing?
 - [ ] make the custom command creation work
-
-# from zed...
-https://coolors.co/101010-e7b89d-f5a191-ea83a5-e29fcb-b7aad7-8fb99f-a1a1a0
-
-# bright
-https://coolors.co/101010-99fee5-fec798-b9aeda-edabd6-f491b3-fe8180-fefffe
-
-# muted
-https://coolors.co/101010-8fb99f-e7b89d-ada1ce-e29fcb-ea83a5-fe8180-a1a1a0
+  - [ ] add the services from the server
+    - warp
+    - docs
+    - lcs
+    - dufs
+    - soft serve
+    - zellij
+    - sshx
+- [ ] support for groups
+  - [ ] show group per task
+  - [ ] filter by group with tabs
+- [ ] remove individual tasks using the `pueue remove <ID>` command via a button in the task card
+- [ ] make this run without having to run in `next dev`, because building and starting doesn't work for some reason
+- [ ] hide it behind some kind of auth
+  - [ ] maybe a simple password prompt?
+- [ ] fix colors and themes
