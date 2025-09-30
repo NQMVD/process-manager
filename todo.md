@@ -1,19 +1,22 @@
 - [ ] the task id should be like the scord rank with a hashtag and the id and in a dimmed color
-- [ ] fix the dropdown not showing?
+- [ ] fix the dropdown for the clean button not showing
+- [ ] fix the hover colors for the card buttons
 - [ ] make the custom command creation work
-  - [ ] add the services from the server
-    - warp
-    - docs
-    - lcs
-    - dufs
-    - soft serve
-    - zellij
-    - sshx
+- [ ] also add the services from the server to the drawer
+  - warp
+  - docs
+  - lcs
+  - dufs
+  - soft serve
+  - zellij webview
+  - sshx
 - [ ] support for groups
   - [ ] show group per task
   - [ ] filter by group with tabs
-- [ ] remove individual tasks using the `pueue remove <ID>` command via a button in the task card
+- [ ] remove individual tasks using the `pueue remove <ID>` command via a button in the task card, task has to be completed, killed, or failed for that
 - [ ] make this run without having to run in `next dev`, because building and starting doesn't work for some reason
 - [ ] hide it behind some kind of auth
   - [ ] maybe a simple password prompt?
-- [ ] fix colors and themes
+- [ ] fix colors and themes, light mode is broken
+- [ ] killed or failed tasks should be restartable
+- [ ] new approach: have two termination buttons for tasks, one for shutdown and one for kill. look at the guide for how to do this
