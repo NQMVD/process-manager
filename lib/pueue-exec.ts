@@ -371,6 +371,7 @@ export async function executeTaskAction(
     resume: ["start", id], // alias
     restart: ["restart", id],
     kill: ["kill", id],
+    terminate: ["send", id, "SIGTERM"],
     cancel: ["remove", id],
     remove: ["remove", id],
   };
