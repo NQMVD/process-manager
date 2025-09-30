@@ -1,7 +1,8 @@
 import { Activity, Server } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { ProcessStats } from "./process-stats";
-import { useIsMobile } from "./ui/use-mobile";
+import { TaskStateHelp } from "./task-state-help";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Process {
   id: string;
@@ -39,6 +40,7 @@ export function Header({ processes = [] }: HeaderProps) {
 
           <div className="flex items-center gap-4">
             {useIsMobile() ? null : <ProcessStats processes={processes} />}
+            <TaskStateHelp />
             <ThemeToggle />
           </div>
         </div>
