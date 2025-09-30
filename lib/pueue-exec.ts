@@ -359,6 +359,7 @@ export async function getTaskOutput(
 
 /**
  * Execute an action on a task. Keep mapping here to sanitize allowed actions.
+ * Supports graceful termination via SIGINT and SIGTERM signals.
  */
 export async function executeTaskAction(
   action: string,
@@ -367,10 +368,12 @@ export async function executeTaskAction(
   const map: Record<string, string[]> = {
     start: ["start", id],
     pause: ["pause", id],
-    stop: ["pause", id], // alias
+    stop: ["pause", id], // alias for backwards compatibility
     resume: ["start", id], // alias
     restart: ["restart", id],
-    kill: ["kill", id],
+    shutdown: ["kill", "--signal", "sigint", id], // Graceful shutdown (SIGINT)
+    terminate: ["kill", "--signal", "sigterm", id], // Graceful termination (SIGTERM)  
+    kill: ["kill", id], // Force kill (SIGKILL)
     cancel: ["remove", id],
     remove: ["remove", id],
   };

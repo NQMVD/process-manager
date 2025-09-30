@@ -4,7 +4,7 @@ import { useState } from "react"
 import { pueueAPI } from "@/lib/pueue-api"
 
 export interface ProcessAction {
-  type: "start" | "stop" | "restart" | "kill" | "pause" | "resume" | "cancel"
+  type: "start" | "stop" | "restart" | "kill" | "pause" | "resume" | "cancel" | "shutdown" | "terminate"
   processId: string
 }
 
