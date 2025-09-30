@@ -67,20 +67,6 @@ export function ProcessActions({
               variant="outline"
               size="sm"
               className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("stop")}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <Square className="h-3 w-3 mr-1" />
-              )}
-              Stop
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
               onClick={() => handleAction("terminate")}
               disabled={isLoading}
             >

@@ -367,11 +367,10 @@ export async function executeTaskAction(
   const map: Record<string, string[]> = {
     start: ["start", id],
     pause: ["pause", id],
-    stop: ["pause", id], // alias
     resume: ["start", id], // alias
     restart: ["restart", id],
     kill: ["kill", id],
-    terminate: ["send", id, "SIGTERM"],
+    terminate: ["kill", "--signal", "SIGTERM", id],
     cancel: ["remove", id],
     remove: ["remove", id],
   };
