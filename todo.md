@@ -5,7 +5,7 @@
 - [x] remove individual tasks using the `pueue remove <ID>` command via a button in the task card, task has to be completed, killed, or failed for that
 - [ ] make this run without having to run in `next dev`, because building and starting doesn't work for some reason
 - [ ] fix colors and themes, light mode is broken
-- [ ] killed or failed tasks should be restartable
+- [x] killed or failed tasks should be restartable
 - [x] new approach: have two termination buttons for tasks, one for shutdown and one for kill. look at the guide for how to do this
 
 - [ ] make the custom command creation work
