@@ -2,6 +2,9 @@
 
 This is a standalone executable for running the Process Manager locally without needing `next dev`.
 
+# ERROR
+ERROR: it builds and starts with next, that means it runs but doesnt work with live data for some reason...
+
 ## Usage
 
 ### Basic Usage
