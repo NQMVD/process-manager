@@ -5,23 +5,16 @@ import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
-
-// Initialize IBM Plex fonts (mapped to existing CSS variable names for continuity)
-
-const plexSans = IBM_Plex_Sans({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
+// Fallback fonts for build environment
+const plexSans = {
   variable: "--font-geist-sans",
-  display: "swap",
-});
+  className: "font-sans",
+};
 
-const plexMono = IBM_Plex_Mono({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
-});
+const plexMono = {
+  variable: "--font-geist-mono", 
+  className: "font-mono",
+};
 
 export const metadata: Metadata = {
   title: "Process Manager",
