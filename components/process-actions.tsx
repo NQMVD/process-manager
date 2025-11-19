@@ -1,20 +1,26 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Play, Square, RotateCcw, Pause, Loader2, Power, Zap, Trash2 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Play, Square, RotateCcw, Pause, Loader2, Power, Zap, Trash2, ChevronDown } from "lucide-react";
 import { useProcessActions } from "@/hooks/use-process-actions";
 import { useNotificationContext } from "./notification-provider";
 
 interface ProcessActionsProps {
   processId: string;
   status:
-    | "running"
-    | "completed"
-    | "killed"
-    | "failed"
-    | "paused"
-    | "queued"
-    | "stashed";
+  | "running"
+  | "completed"
+  | "killed"
+  | "failed"
+  | "paused"
+  | "queued"
+  | "stashed";
   onActionComplete?: () => void;
 }
 
@@ -63,65 +69,39 @@ export function ProcessActions({
               )}
               Pause
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("shutdown")}
-              disabled={isLoading}
-              title="Graceful shutdown (SIGINT)"
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <Power className="h-3 w-3 mr-1" />
-              )}
-              Shutdown
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("terminate")}
-              disabled={isLoading}
-              title="Terminate (SIGTERM)"
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <Square className="h-3 w-3 mr-1" />
-              )}
-              Terminate
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("kill")}
-              disabled={isLoading}
-              title="Force kill (SIGKILL)"
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <Zap className="h-3 w-3 mr-1" />
-              )}
-              Kill
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("restart")}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <RotateCcw className="h-3 w-3 mr-1" />
-              )}
-              Restart
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                  ) : null}
+                  Shutdown
+                  <ChevronDown className="h-3 w-3 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleAction("shutdown")}>
+                  <Power className="h-3 w-3 mr-2" />
+                  <span>Shutdown</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGINT</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleAction("terminate")}>
+                  <Square className="h-3 w-3 mr-2" />
+                  <span>Terminate</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGTERM</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleAction("kill")}>
+                  <Zap className="h-3 w-3 mr-2" />
+                  <span>Hard Kill</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGKILL</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </>
         );
       case "paused":
@@ -139,23 +119,41 @@ export function ProcessActions({
               ) : (
                 <Play className="h-3 w-3 mr-1" />
               )}
-              Resume
+              Continue
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
-              onClick={() => handleAction("kill")}
-              disabled={isLoading}
-              title="Force kill (SIGKILL)"
-            >
-              {isLoading ? (
-                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-              ) : (
-                <Zap className="h-3 w-3 mr-1" />
-              )}
-              Kill
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 bg-card px-0 py-0 hover:bg-gradient-to-b hover:from-[oklch(0.18750_0_0)] hover:to-[oklch(0.20250_0_0)] font-normal"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                  ) : null}
+                  Shutdown
+                  <ChevronDown className="h-3 w-3 ml-1" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleAction("shutdown")}>
+                  <Power className="h-3 w-3 mr-2" />
+                  <span>Shutdown</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGINT</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleAction("terminate")}>
+                  <Square className="h-3 w-3 mr-2" />
+                  <span>Terminate</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGTERM</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleAction("kill")}>
+                  <Zap className="h-3 w-3 mr-2" />
+                  <span>Hard Kill</span>
+                  <span className="ml-auto text-xs text-muted-foreground">SIGKILL</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </>
         );
       case "failed":
@@ -190,7 +188,7 @@ export function ProcessActions({
               ) : (
                 <Trash2 className="h-3 w-3 mr-1" />
               )}
-              Remove
+              Delete
             </Button>
           </>
         );

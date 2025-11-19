@@ -60,7 +60,7 @@ export function ProcessCard({ process }: ProcessCardProps) {
         <div className="flex items-start justify-between gap-2 my-0 py-0">
           <div className="min-w-0 flex-1">
             <h3 className="font-semibold text-lg text-foreground text-balance pr-0 mr-2 border-none border-0">
-              {process.name}
+              #{process.id} {process.name}
             </h3>
           </div>
           <Badge className={getStatusColor(process.status)}>
@@ -70,33 +70,7 @@ export function ProcessCard({ process }: ProcessCardProps) {
       </CardHeader>
 
       <CardContent className="space-y-3 my-0 px-3.5">
-        <div>
-          <p className="text-xs text-muted-foreground mb-2 font-medium py-0">
-            Command
-          </p>
-          <CommandDisplay command={process.command} />
-        </div>
-
-        <div className="flex items-center gap-4 text-sm">
-          <div className="flex items-center gap-1 text-muted-foreground">
-            <Clock className="h-3 w-3" />
-            <span>{process.duration}</span>
-          </div>
-          {process.exitCode !== null && (
-            <div className="text-muted-foreground">
-              Exit:{" "}
-              <span
-                className={
-                  process.exitCode === 0
-                    ? "text-green-600 dark:text-green-400"
-                    : "text-red-600 dark:text-red-400"
-                }
-              >
-                {process.exitCode}
-              </span>
-            </div>
-          )}
-        </div>
+        <CommandDisplay command={process.command} />
 
         <ProcessOutput
           output={process.output}

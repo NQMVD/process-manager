@@ -22,15 +22,15 @@ export function CommandDisplay({ command }: CommandDisplayProps) {
   };
 
   return (
-    <div className="group relative">
-      <div className="dark:bg-muted/30 rounded-md p-3 font-mono text-sm break-all border bg-[rgba(19,19,19,1)]">
+    <div className="flex items-center gap-2">
+      <div className="dark:bg-muted/30 rounded-md p-3 font-mono text-sm break-all border bg-[rgba(19,19,19,1)] flex-1">
         <code className="text-foreground">{command}</code>
       </div>
       <Button
         variant="ghost"
         size="icon"
         onClick={copyCommand}
-        className="absolute top-2 right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 hover:bg-background mx-0 my-0 px-0 py-0 mt-[3px] rounded-md"
+        className="h-9 w-9 flex-shrink-0 bg-background/80 hover:bg-background mx-0 my-0 px-0 py-0 rounded-md"
       >
         {copied ? (
           <Check className="h-3 w-3 text-emerald-600" />
